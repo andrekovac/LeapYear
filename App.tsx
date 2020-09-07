@@ -1,20 +1,45 @@
 import React from "react";
-import { StyleSheet, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import styled from "styled-components/native";
 
-export default function App() {
+const App = () => {
   return (
     <Container>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Text size={80}>{"Leap Year"}</Text>
+      <Button>
+        <TextWrapper>
+          <Text>Start</Text>
+        </TextWrapper>
+      </Button>
       <StatusBar style="auto" />
     </Container>
   );
-}
+};
 
 const Container = styled.View`
   flex: 1;
-  background-color: #fff;
+  background-color: #ff0e64;
+  padding: 10px;
+
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 `;
+
+const Button = styled.TouchableOpacity`
+  width: 100%;
+`;
+
+const Text = styled.Text<{ size?: number }>`
+  font-size: ${(props) => (props.size ? `${props.size}px` : "30px")};
+  font-weight: 100;
+`;
+
+const TextWrapper = styled.View`
+  padding: 10px 0;
+  background-color: white;
+  border-radius: 35px;
+
+  align-items: center;
+`;
+
+export default App;
