@@ -6,7 +6,7 @@ const App = () => {
   return (
     <Container>
       <Text size={80}>{"Leap Year"}</Text>
-      <Button>
+      <Button onPress={() => console.log("Button pressed")}>
         <TextWrapper>
           <Text>Start</Text>
         </TextWrapper>
