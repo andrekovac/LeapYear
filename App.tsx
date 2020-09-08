@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Button as NativeButton } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import styled from "styled-components/native";
+
+import Text from "./components/Text";
+import HomeScreen from "./screens/HomeScreen";
 
 type StartButtonProps = {
   text: string;
@@ -22,14 +24,7 @@ const App = () => {
   return (
     <Container>
       {hasPressedButton ? (
-        <>
-          <Text size={60}>{"You entered the App"}</Text>
-          <NativeButton
-            title={"Return"}
-            color={"black"}
-            onPress={() => setHasPressedButton(false)}
-          />
-        </>
+        <HomeScreen onPress={() => setHasPressedButton(false)} />
       ) : (
         <>
           <Text size={80}>{"Leap Year"}</Text>
@@ -55,12 +50,6 @@ const Container = styled.View`
 
 const Button = styled.TouchableOpacity`
   width: 100%;
-`;
-
-const Text = styled.Text<{ size?: number }>`
-  font-size: ${(props) => (props.size ? `${props.size}px` : "30px")};
-  font-weight: 100;
-  text-align: center;
 `;
 
 const TextWrapper = styled.View`
