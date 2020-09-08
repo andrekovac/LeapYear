@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import styled from "styled-components/native";
 
-import HomeScreen from "./screens/HomeScreen";
-import WelcomeScreen from "./screens/WelcomeScreen";
+import HomeScreen from "./src/screens/HomeScreen";
+import WelcomeScreen from "./src/screens/WelcomeScreen";
 
 const App = () => {
   const [hasPressedButton, setHasPressedButton] = useState(false);
