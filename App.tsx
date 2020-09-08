@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button as NativeButton } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import styled from "styled-components/native";
 
 type StartButtonProps = {
   text: string;
-}
+  onPress: () => void;
+};
 
-const StartButton = ({ text }: StartButtonProps) => (
-  <Button onPress={() => console.log("Button pressed")}>
+const StartButton = ({ text, onPress }: StartButtonProps) => (
+  <Button onPress={onPress}>
     <TextWrapper>
       <Text>{text}</Text>
     </TextWrapper>
@@ -15,10 +17,28 @@ const StartButton = ({ text }: StartButtonProps) => (
 );
 
 const App = () => {
+  const [hasPressedButton, setHasPressedButton] = useState(false);
+
   return (
     <Container>
-      <Text size={80}>{"Leap Year"}</Text>
-      <StartButton text={"Start"} />
+      {hasPressedButton ? (
+        <>
+          <Text size={60}>{"You entered the App"}</Text>
+          <NativeButton
+            title={"Return"}
+            color={"black"}
+            onPress={() => setHasPressedButton(false)}
+          />
+        </>
+      ) : (
+        <>
+          <Text size={80}>{"Leap Year"}</Text>
+          <StartButton
+            text={"Start"}
+            onPress={() => setHasPressedButton(true)}
+          />
+        </>
+      )}
       <StatusBar style="auto" />
     </Container>
   );
@@ -40,6 +60,7 @@ const Button = styled.TouchableOpacity`
 const Text = styled.Text<{ size?: number }>`
   font-size: ${(props) => (props.size ? `${props.size}px` : "30px")};
   font-weight: 100;
+  text-align: center;
 `;
 
 const TextWrapper = styled.View`
