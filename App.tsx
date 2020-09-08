@@ -2,21 +2,8 @@ import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import styled from "styled-components/native";
 
-import Text from "./components/Text";
 import HomeScreen from "./screens/HomeScreen";
-
-type StartButtonProps = {
-  text: string;
-  onPress: () => void;
-};
-
-const StartButton = ({ text, onPress }: StartButtonProps) => (
-  <Button onPress={onPress}>
-    <TextWrapper>
-      <Text>{text}</Text>
-    </TextWrapper>
-  </Button>
-);
+import WelcomeScreen from "./screens/WelcomeScreen";
 
 const App = () => {
   const [hasPressedButton, setHasPressedButton] = useState(false);
@@ -26,13 +13,7 @@ const App = () => {
       {hasPressedButton ? (
         <HomeScreen onPress={() => setHasPressedButton(false)} />
       ) : (
-        <>
-          <Text size={80}>{"Leap Year"}</Text>
-          <StartButton
-            text={"Start"}
-            onPress={() => setHasPressedButton(true)}
-          />
-        </>
+        <WelcomeScreen onPress={() => setHasPressedButton(true)} />
       )}
       <StatusBar style="auto" />
     </Container>
@@ -46,18 +27,6 @@ const Container = styled.View`
 
   align-items: center;
   justify-content: space-evenly;
-`;
-
-const Button = styled.TouchableOpacity`
-  width: 100%;
-`;
-
-const TextWrapper = styled.View`
-  padding: 10px 0;
-  background-color: white;
-  border-radius: 35px;
-
-  align-items: center;
 `;
 
 export default App;
