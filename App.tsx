@@ -2,15 +2,23 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import styled from "styled-components/native";
 
+type StartButtonProps = {
+  text: string;
+}
+
+const StartButton = ({ text }: StartButtonProps) => (
+  <Button onPress={() => console.log("Button pressed")}>
+    <TextWrapper>
+      <Text>{text}</Text>
+    </TextWrapper>
+  </Button>
+);
+
 const App = () => {
   return (
     <Container>
       <Text size={80}>{"Leap Year"}</Text>
-      <Button onPress={() => console.log("Button pressed")}>
-        <TextWrapper>
-          <Text>Start</Text>
-        </TextWrapper>
-      </Button>
+      <StartButton text={"Start"} />
       <StatusBar style="auto" />
     </Container>
   );
