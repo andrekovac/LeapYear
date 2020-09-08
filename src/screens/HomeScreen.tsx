@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Button } from 'react-native'
 
 import Text from '../components/Text';
+import leapYearText from '../util/leapYear';
 
 type HomeScreenProps = {
     onPress: () => void;
@@ -10,7 +11,7 @@ type HomeScreenProps = {
 const HomeScreen: FunctionComponent<HomeScreenProps> = ({ onPress }) => {
     return (
         <>
-          <Text size={60}>{"You entered the App"}</Text>
+          <Text>{leapYearText(2020)}</Text>
           <Button
             title={"Return"}
             color={"black"}
