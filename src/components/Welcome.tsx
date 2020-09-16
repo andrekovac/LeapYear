@@ -39,7 +39,13 @@ const Welcome: FunctionComponent<WelcomeProps> = ({
             {
               scale: introAnim.interpolate({
                 inputRange: [0, 1],
-                outputRange: [1, 2],
+                outputRange: [1, 2.5],
+              }),
+            },
+            {
+              translateY: introAnim.interpolate({
+                inputRange: [0, 1],
+                outputRange: [-300, 2],
               }),
             },
           ],
