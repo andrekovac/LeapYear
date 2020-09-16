@@ -1,19 +1,17 @@
 import React, { FunctionComponent } from "react";
 
-import Text from "../components/Text";
-import StartButton from "../components/StartButton";
+import Welcome from "../components/Welcome";
 
 type WelcomeScreenProps = {
   onPress: () => void;
+  hasPressedButton: boolean;
 };
 
-const WelcomeScreen: FunctionComponent<WelcomeScreenProps> = ({ onPress }) => {
-  return (
-    <>
-      <Text size={80}>{"Leap Year"}</Text>
-      <StartButton text={"Start"} onPress={onPress} />
-    </>
-  );
+const WelcomeScreen: FunctionComponent<WelcomeScreenProps> = ({
+  onPress,
+  hasPressedButton,
+}) => {
+  return <Welcome onPress={onPress} buttonPressed={hasPressedButton} />;
 };
 
 export default WelcomeScreen;
