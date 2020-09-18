@@ -25,7 +25,7 @@ const WelcomeScreen: FunctionComponent<WelcomeScreenProps> = ({
   const bounceIn = () => {
     Animated.timing(introAnim, {
       toValue: 1,
-      duration: 1000,
+      duration: 1200,
       easing: Easing.bounce,
       useNativeDriver: true,
     }).start();
@@ -38,7 +38,13 @@ const WelcomeScreen: FunctionComponent<WelcomeScreenProps> = ({
         {
           scale: introAnim.interpolate({
             inputRange: [0, 1],
-            outputRange: [1, 2],
+            outputRange: [1, 2.5],
+          }),
+        },
+        {
+          translateY: introAnim.interpolate({
+            inputRange: [0, 1],
+            outputRange: [-300, 0],
           }),
         },
       ],
