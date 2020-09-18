@@ -20,4 +20,7 @@ const HomeScreen: FunctionComponent<HomeScreenProps> = ({ onPress }) => {
   );
 };
 
-export default HomeScreen;
+export default withFadeAnimation({
+  shouldFadeIn: true,
+  speed: 500,
+})(HomeScreen);
