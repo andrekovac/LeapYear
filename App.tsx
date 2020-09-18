@@ -24,9 +24,6 @@ const Container = styled.View`
   flex: 1;
   background-color: #ff0e64;
   padding: 10px;
-
-  align-items: center;
-  justify-content: space-evenly;
 `;
 
 export default App;
