@@ -15,6 +15,7 @@ const WelcomeScreen: FunctionComponent<WelcomeScreenProps> = ({
   hasPressedButton,
 }) => {
   const introAnim = useRef(new Animated.Value(0)).current;
+  const fadeOutAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     bounceIn();
@@ -32,8 +33,23 @@ const WelcomeScreen: FunctionComponent<WelcomeScreenProps> = ({
     }).start();
   };
 
+  const fadeOut = () => {
+    Animated.timing(fadeOutAnim, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start(onPress);
+  };
+
   return (
-    <Wrapper>
+    <Wrapper
+      style={{
+        opacity: fadeOutAnim.interpolate({
+          inputRange: [0, 1],
+          outputRange: [1, 0],
+        }),
+      }}
+    >
       <Text
         style={{
           transform: [
@@ -54,7 +70,7 @@ const WelcomeScreen: FunctionComponent<WelcomeScreenProps> = ({
       >
         LeapYear
       </Text>
-      <StartButton text={"Start"} onPress={onPress} />
+      <StartButton text={"Start"} onPress={fadeOut} />
     </Wrapper>
   );
 };
