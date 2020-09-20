@@ -17,6 +17,7 @@ const StartButton = ({ text, onPress }: StartButtonProps) => (
 );
 
 const Button = styled.TouchableOpacity`
+  padding: 0 10px;
   width: 100%;
 `;
 
