@@ -2,7 +2,6 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect, useRef, FunctionComponent } from "react";
 import {
   Animated,
-  View,
   Button,
   Easing,
   KeyboardAvoidingView,
@@ -20,6 +19,8 @@ import Gradient from "../components/Gradient";
 import Wrapper from "../components/Wrapper";
 import withFadeAnimation from "../components/withFadeAnimation";
 
+import { paddingNormal } from "../constants/style";
+
 type HomeScreenProps = {
   onPress: () => void;
 };
@@ -29,7 +30,14 @@ const HomeScreen: FunctionComponent<HomeScreenProps> = ({ onPress }) => {
 
   const elasticAnim = useRef(new Animated.Value(0)).current;
 
-  useEffect(() => animatePress(), []);
+  useEffect(() => {
+    animatePress();
+
+    return () => {
+      onChangeYear(undefined);
+      elasticAnim.setValue(0);
+    };
+  }, []);
 
   const animatePress = () => {
     Animated.timing(elasticAnim, {
@@ -41,22 +49,9 @@ const HomeScreen: FunctionComponent<HomeScreenProps> = ({ onPress }) => {
   };
 
   const ResetButton = () => (
-    <View
-      style={{
-        alignItems: "flex-end",
-        padding: 10,
-        backgroundColor: "white",
-      }}
-    >
-      <Button
-        title={"Reset"}
-        onPress={() => {
-          onPress();
-          onChangeYear(undefined);
-          elasticAnim.setValue(0);
-        }}
-      />
-    </View>
+    <ResetButtonWrapper>
+      <Button title={"Reset"} onPress={onPress} />
+    </ResetButtonWrapper>
   );
 
   const YearInput = () => (
@@ -108,7 +103,8 @@ const HomeScreen: FunctionComponent<HomeScreenProps> = ({ onPress }) => {
 
 const Top = styled(LinearGradient)<{ borderRadius?: number }>`
   background-color: white;
-  padding: ${Constants.statusBarHeight + 30}px 10px 30px 10px;
+  padding: ${Constants.statusBarHeight + 30}px ${paddingNormal} 30px
+    ${paddingNormal};
 
   /* alignment of children */
   justify-content: center;
@@ -120,7 +116,7 @@ const Top = styled(LinearGradient)<{ borderRadius?: number }>`
 const Bottom = styled(Animated.View)`
   flex: 1;
   background-color: white;
-  padding: 10px;
+  padding: ${paddingNormal};
 
   /* alignment of children */
   justify-content: center;
@@ -143,7 +139,7 @@ const GradientWrapper = styled(Gradient)<{ borderRadius?: number }>`
 `;
 
 const Input = styled(TextInput)`
-  padding: 10px 0;
+  padding: ${paddingNormal} 0;
 
   font-size: 40px;
   text-align: center;
@@ -151,12 +147,18 @@ const Input = styled(TextInput)`
 `;
 
 const TextWrapper = styled.View`
-  padding: 10px;
+  padding: ${paddingNormal};
   background-color: white;
   width: 100%;
   border-radius: 35px;
 
   align-items: center;
+`;
+
+const ResetButtonWrapper = styled.View`
+  padding: ${paddingNormal};
+  background-color: white;
+  align-items: flex-end;
 `;
 
 export default withFadeAnimation({

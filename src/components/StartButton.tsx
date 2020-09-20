@@ -3,6 +3,8 @@ import styled from "styled-components/native";
 
 import Text from "./Text";
 
+import { paddingNormal } from '../constants/style';
+
 type StartButtonProps = {
   text: string;
   onPress: () => void;
@@ -17,12 +19,12 @@ const StartButton = ({ text, onPress }: StartButtonProps) => (
 );
 
 const Button = styled.TouchableOpacity`
-  padding: 0 10px;
+  padding: 0 ${paddingNormal};
   width: 100%;
 `;
 
 const TextWrapper = styled.View`
-  padding: 10px 0;
+  padding: ${paddingNormal} 0;
   background-color: white;
   border-radius: 35px;
 
