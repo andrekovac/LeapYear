@@ -24,7 +24,7 @@ const useFadeOutAnimation = ({
   const fadeOut = () => {
     Animated.timing(fadeOutAnim, {
       toValue: 0,
-      duration: 1000,
+      duration: 500,
       useNativeDriver: true,
     }).start(onUnmountCallback);
   };

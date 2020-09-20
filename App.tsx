@@ -26,7 +26,6 @@ const App = () => {
 const Container = styled.View`
   flex: 1;
   background-color: #ff0e64;
-  padding: 10px;
 `;
 
 export default App;
