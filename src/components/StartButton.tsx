@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 
-import Text from './Text';
+import Text from "./Text";
 
 type StartButtonProps = {
   text: string;
