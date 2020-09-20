@@ -4,6 +4,7 @@ exports[`Text renders correctly 1`] = `
 <Text
   style={
     Object {
+      "color": "black",
       "fontSize": 30,
       "fontWeight": "100",
       "textAlign": "center",
@@ -17,6 +18,7 @@ exports[`Text renders correctly with size prop 1`] = `
   size={100}
   style={
     Object {
+      "color": "black",
       "fontSize": 100,
       "fontWeight": "100",
       "textAlign": "center",

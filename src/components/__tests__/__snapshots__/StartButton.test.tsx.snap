@@ -36,6 +36,7 @@ exports[`renders correctly 1`] = `
     <Text
       style={
         Object {
+          "color": "black",
           "fontSize": 30,
           "fontWeight": "100",
           "textAlign": "center",
