@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text renders correctly 1`] = `
+<Text
+  style={
+    Object {
+      "fontSize": 30,
+      "fontWeight": "100",
+      "textAlign": "center",
+    }
+  }
+/>
+`;
+
+exports[`Text renders correctly with size prop 1`] = `
+<Text
+  size={100}
+  style={
+    Object {
+      "fontSize": 100,
+      "fontWeight": "100",
+      "textAlign": "center",
+    }
+  }
+/>
+`;
