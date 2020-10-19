@@ -11,7 +11,7 @@ type StartButtonProps = {
 };
 
 const StartButton = ({ text, onPress }: StartButtonProps) => (
-  <Button onPress={onPress}>
+  <Button onPress={onPress} testID="start_button">
     <TextWrapper>
       <Text>{text}</Text>
     </TextWrapper>
