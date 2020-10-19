@@ -41,6 +41,7 @@
     "@types/styled-components": "^5.1.2",
     "babel-jest": "~25.2.6",
     "detox": "^17.10.2",
+    "detox-recorder": "^1.0.146",
     "jest": "~25.2.6",
     "jest-circus": "^26.6.0",
     "jest-expo": "^38.0.2",
