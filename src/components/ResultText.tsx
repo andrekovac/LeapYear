@@ -42,6 +42,7 @@ const ResultText: FunctionComponent<{ year?: string }> = ({ year }) => {
           ],
         }}
         size={90}
+        testID="result_text"
       >
         {year || "0"}
       </Text>

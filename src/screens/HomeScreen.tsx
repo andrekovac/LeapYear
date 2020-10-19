@@ -70,6 +70,7 @@ const HomeScreen: FunctionComponent<HomeScreenProps> = ({ onPress }) => {
             placeholder={"2020"}
             maxLength={4}
             keyboardType={"numeric"}
+            testID="text_input"
           />
         </GradientWrapper>
       </Bottom>
