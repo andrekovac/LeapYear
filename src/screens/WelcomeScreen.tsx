@@ -39,7 +39,7 @@ const WelcomeScreen: FunctionComponent<WelcomeScreenProps> = ({
   };
 
   return (
-    <Wrapper style={opacityStyle}>
+    <Wrapper style={opacityStyle} testID="welcome">
       <Text
         style={{
           transform: [
