@@ -45,6 +45,7 @@
     "jest-circus": "^26.6.0",
     "jest-expo": "^38.0.2",
     "react-test-renderer": "^16.13.1",
+    "ts-jest": "^26.4.1",
     "typescript": "~3.9.5"
   },
   "private": true,

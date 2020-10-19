@@ -54,13 +54,26 @@ This is how the welcome screen looks like on iOS and Android:
 
 Enter a year as a 4-digit number. It will be displayed whether the entered year is a leap year.
 
-## End-2-End tests with Detox
+## End-2-End tests with [Detox](https://github.com/wix/Detox/tree/master/docs)
 
-1. Switch to the `detox` branch.
+1. Install `detox-cli` and required tools globally:
 
-    **Note**: Detox was installed using [these instructions from reactnativetesting.io](https://reactnativetesting.io/e2e/setup.html#installing-detox) (excluding the ESLint part) and the addition to run `yarn add --dev @types/detox` for TypeScript support.
+    On a Mac run the following four commands:
 
-2. Run the following commands to run the Detox tests:
+    ```bash
+    xcode-select --install
+    brew tap wix/brew
+    brew install applesimutils
+    npm install -g detox-cli
+    ```
+
+2. Switch to the `detox` branch.
+
+    **Note**: Detox was installed using [these instructions from reactnativetesting.io](https://reactnativetesting.io/e2e/setup.html#installing-detox) (excluding the ESLint part)
+
+    Then support for Detox tests written in TypeScript was added with `yarn add --dev ts-jest @types/detox` (loosly following [these instructions](https://gist.github.com/solkaz/ead11515e2aa91d0dc04e609b3108841)).
+
+3. Run the following commands to run the Detox tests:
 
      1. Install dependencies again. The App on the `detox` branch is an [ejected Expo app](https://docs.expo.io/bare/customizing/) so the dependencies are different as compared to the [managed workflow](https://docs.expo.io/introduction/managed-vs-bare/#managed-workflow).
 
@@ -68,7 +81,7 @@ Enter a year as a 4-digit number. It will be displayed whether the entered year 
         yarn
         ```
 
-     2. Build the iOS App
+     2. Build the iOS App (only has to be run after adding new packages which have a native part)
 
          ```bash
          yarn test:e2e:build
