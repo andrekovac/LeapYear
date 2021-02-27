@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, FunctionComponent } from "react";
 import { Animated, Easing } from "react-native";
 
+import useFadeOutAnimation from "../hooks/useFadeOutAnimation";
+
 import Text from "../components/Text";
 import StartButton from "../components/StartButton";
 import Wrapper from "../components/Wrapper";
@@ -15,7 +17,10 @@ const WelcomeScreen: FunctionComponent<WelcomeScreenProps> = ({
   hasPressedButton,
 }) => {
   const introAnim = useRef(new Animated.Value(0)).current;
-  const fadeOutAnim = useRef(new Animated.Value(0)).current;
+
+  const [opacityStyle, startFadeOutAnimation] = useFadeOutAnimation({
+    onUnmountCallback: onPress,
+  });
 
   useEffect(() => {
     bounceIn();
@@ -33,22 +38,9 @@ const WelcomeScreen: FunctionComponent<WelcomeScreenProps> = ({
     }).start();
   };
 
-  const fadeOut = () => {
-    Animated.timing(fadeOutAnim, {
-      toValue: 1,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start(onPress);
-  };
-
   return (
     <Wrapper
-      style={{
-        opacity: fadeOutAnim.interpolate({
-          inputRange: [0, 1],
-          outputRange: [1, 0],
-        }),
-      }}
+      style={opacityStyle}
     >
       <Text
         style={{
@@ -70,7 +62,7 @@ const WelcomeScreen: FunctionComponent<WelcomeScreenProps> = ({
       >
         LeapYear
       </Text>
-      <StartButton text={"Start"} onPress={fadeOut} />
+      <StartButton text={"Start"} onPress={startFadeOutAnimation} />
     </Wrapper>
   );
 };
