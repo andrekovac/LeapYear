@@ -14,6 +14,7 @@ const WelcomeScreen: FunctionComponent<WelcomeScreenProps> = ({
   hasPressedButton,
 }) => {
   const introAnim = useRef(new Animated.Value(0)).current;
+  const translateAnim = useRef(new Animated.Value(-300)).current;
 
   useEffect(() => {
     bounceIn();
@@ -23,12 +24,21 @@ const WelcomeScreen: FunctionComponent<WelcomeScreenProps> = ({
   }, [hasPressedButton]);
 
   const bounceIn = () => {
-    Animated.timing(introAnim, {
-      toValue: 1,
-      duration: 1200,
-      easing: Easing.bounce,
-      useNativeDriver: true,
-    }).start();
+    Animated.parallel([
+      Animated.timing(introAnim, {
+        toValue: 1,
+        duration: 1200,
+        easing: Easing.bounce,
+        useNativeDriver: true,
+      }),
+      Animated.timing(translateAnim, {
+        toValue: 0,
+        duration: 1200,
+        easing: Easing.bounce,
+        useNativeDriver: true,
+      })
+    ])
+    .start();
   };
 
   return <Wrapper>
@@ -36,17 +46,14 @@ const WelcomeScreen: FunctionComponent<WelcomeScreenProps> = ({
     style={{
       transform: [
         {
-          scale: introAnim.interpolate({
+          rotate: introAnim.interpolate({
             inputRange: [0, 1],
-            outputRange: [1, 2.5],
+            outputRange: ['60deg', '0deg'],
           }),
         },
         {
-          translateY: introAnim.interpolate({
-            inputRange: [0, 1],
-            outputRange: [-300, 0],
-          }),
-        },
+          translateY: translateAnim
+        }
       ],
     }}
   >
