@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://expo.dev/@andrusch/LeapYear">
+    <img alt="Leap Year Logo" src="./assets/LeapYearCalendar.png" width="180" />
+  </a>
+</p>
+
 <h1 align="center">
   LeapYear App
 </h1>
